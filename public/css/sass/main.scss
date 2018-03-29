@@ -1,0 +1,284 @@
+//Sass document
+
+@import 'reset';
+@import 'colours';
+
+.hidden {
+  display: none;
+}
+
+//main SASS document
+.hidden{
+  display: none;
+}
+
+body {
+  width: 100%;
+}
+
+#main-container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background: rgb(98,53,147); /* Old browsers */
+  background: rgb(98,53,147); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(98,53,147,1) 2%, rgba(30,87,153,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(98,53,147,1) 2%,rgba(30,87,153,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(98,53,147,1) 2%,rgba(30,87,153,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#623593', endColorstr='#1e5799',GradientType=0 ); /* IE6-9 */
+}
+
+#container {
+  width: 1300px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+header{
+  background-color: $gray;
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  padding: 10px 30px;
+  justify-content: space-between;
+  align-content: center;
+  img{
+    width: 8%;
+    display: block;
+    color: #fff;
+  }
+  #main-nav{
+    color: #fff;
+    ul li {
+      font-family: $title;
+      display: inline-flex;
+      padding: 10px;
+      a {
+        text-decoration: none;
+        color: #fff;
+        text-transform: uppercase;
+        padding: 10px;
+        font-size: 1.5rem;
+        line-height: 100px;
+        i {
+          padding-right: 8px;
+        }
+      }
+    }
+  }
+}
+
+
+.movies-section{
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;;
+  text-align: left;
+  padding:50px;
+  width: 80%;
+  margin: 60px auto;
+  h1,h2{
+    font-family: $title;
+    color: $gray;
+  }
+  h1 {
+    font-size: 2.5rem;
+    padding: 20px 0;
+  }
+  h2 {
+    font-size: 1.4rem;
+    padding-top: 20px;
+  }
+  h4{
+    text-align: center;
+    font-family: $text;
+    font-style: italic;
+  }
+  h5 {
+    padding: 30px 0 0 100px;
+    font-family: $title;
+    color: $yellow;
+    font-size: 2rem;
+  }
+  .greeting{
+    text-align: center;
+    margin: 20px;
+  }
+  .links{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 100px;
+    grid-gap: 30px;
+    a{
+      padding: 20px 10px;
+      text-decoration: none;
+      font-family: $title;
+      color: #fff;
+      background-color: $purple;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+  .options{
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    a{
+      text-decoration: none;
+      color: #fff;
+    }
+    .option{
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      background-color: $blue;
+      padding: 10px;
+      margin: 10px 0;
+      color: #fff;
+      text-transform: uppercase;
+      font-family: $title;
+      font-size: 3rem;
+      h2 {
+        font-size: 3rem;
+        color: #fff;
+      }
+      i{
+        font-size: 6rem;
+      }
+    }
+  }
+  label {
+    font-family: $text;
+    color: $gray;
+    font-size: 1.1rem;
+  }
+  ul{
+    &::before{
+      @extend label;
+      color: $yellow;
+      font-size: 1.8rem;
+      content: "List of Movies";
+    }
+    width: 70%;
+    margin: 0 auto;
+    li{
+      display: grid;
+      grid-template-columns: 3fr 1fr 1fr;
+      padding: 20px;
+      a{
+        text-decoration: none;
+        font-family: $text;
+        color: $purple;
+      }
+    }
+    li:nth-child(1){
+      margin-top: 40px;
+    }
+    li:nth-child(odd){
+      background-color: $light;
+    }
+  }
+}
+
+.backbtn {
+  color: $yellow;
+  font-size: 1.3rem;
+  font-family: $title;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+
+#movies{
+  text-align: center;
+  margin: 50px 0;
+  padding-top: 50px;
+  border-top: 3px solid $yellow;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  .cover{
+    position: relative;
+    h4{
+      position: absolute;
+      font-family: $title;
+      background-color: $purple;
+      color: #fff;
+      top: 50%;
+      width: 0;
+      line-height: 3.3rem;
+      text-align: center;
+      text-align: center;
+      opacity: 0;
+      transition: width 0.4s ease;
+      transition: font-size 0.6s ease;
+    }
+    img{
+      width: 100%;
+    }
+  }.cover:hover{
+    h4{
+      width: 100%;
+      opacity: 1;
+      font-size: 1.8rem;
+    }
+  }
+}
+
+  form {
+    width: 30vw;
+    margin: 30px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font: 1vw 'Nanum Gothic', sans-serif;
+    label {
+      color: $darkgrey;
+      font-size: 1.1vw;
+      padding: 5px 0;
+    }
+    input, select, input[type=select], textarea {
+      box-shadow: 0 0 6px 0 rgba(0,0,0,0.4);
+      border-radius: 5px;
+      padding: 0 5px;
+      height: 2em;
+      font-size: 1vw;
+      // margin: 5px 0;
+    }
+    textarea{
+      border: 1px solid $light;
+      min-height: 70px;
+    }
+    select{
+      margin-top: 30px;
+    }
+    #submit{
+      margin: 5vw auto;
+      font-size: 1.4vw;
+      width: 10vw;
+      background-color: $purple;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+
+
+  footer{
+    h2{
+      text-align: center;
+      padding: 20px;
+      font-family: $text;
+      background-color: $darkgrey;
+      color: #fff;
+    }
+  }
+
+// run grunt watch
