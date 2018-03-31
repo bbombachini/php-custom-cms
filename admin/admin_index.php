@@ -24,10 +24,10 @@
             <?php if(!empty($_GET['message'])) {
                   $message = $_GET['message'];
                   echo '<div><h3>'.$message.'</h3></div>'; } ?>
-            <h5>Movie Manager</h5>
+            <h5>Movies Manager</h5>
             <div class="links">
-              <a href="admin_addmovie.php"><p>Add new Movie</p></a>
-              <a href="admin_list.php"><p>View all</p></a>
+              <a href="admin_list.php?query=movies"><p>Movies</p></a>
+              <a href="admin_list.php?query=genre"><p>Genres</p></a>
             </div>
           </div>
       </div>

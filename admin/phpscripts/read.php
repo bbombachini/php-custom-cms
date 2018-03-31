@@ -1,8 +1,12 @@
 <?php
+		ini_set('display_errors',1);
+		error_reporting(E_ALL);
+
+		require_once('functions.php');
 		function getAll($tbl){
 			include('connect.php');
 
-			$queryAll = "SELECT * FROM {$tbl}";
+			$queryAll = "SELECT * FROM {$tbl} WHERE active=1";
 			$runAll = mysqli_query($link, $queryAll);
 			// echo $queryAll;
 			if($runAll) {
@@ -46,4 +50,33 @@
 
 			mysqli_close($link);
 		}
+
+		if(isset($_GET['delete'])){
+			$dir = $_GET['delete'];
+			if($dir == "movies"){
+				$id = $_GET['id'];
+				$tbl = "tbl_movies";
+				$col = "movies_id";
+			}
+			if($dir == "genre"){
+				$id = $_GET['id'];
+				$tbl = "tbl_genre";
+				$col = "genre_id";
+			}
+			deleteSingle($id, $tbl, $col);
+		}
+
+		function deleteSingle($id, $tbl, $col){
+			include('connect.php');
+			$deleteQuery = "UPDATE {$tbl} SET active = 0 WHERE {$col} = {$id};";
+			$delete = mysqli_query($link, $deleteQuery);
+			if($delete) {
+				redirect_to("../admin_index.php");
+			} else {
+				$error = "There was a problem processing this request. Try again later.";
+				return $error;
+			}
+			mysqli_close($link);
+		}
+
 ?>
