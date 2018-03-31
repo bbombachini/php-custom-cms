@@ -12,7 +12,6 @@
       $founduser = mysqli_fetch_array($checkUser, MYSQLI_ASSOC);
       $id = $founduser['user_id'];
       // Before allow user in, check if it's blocked
-      if($founduser['last_pass_change'] !== null){
         if($founduser['user_attempts'] < 3){
           // As user exists, check if password match
           $verified = checkPass($password, $founduser['user_pass']);
@@ -55,10 +54,7 @@
           }
           $message = "Please be minded that after 3 attempts, your user will be blocked";
           return $message;
-        }
-        else {
-          redirect_to("admin_updatepassword.php");
-        }
+
       }
       //As user is not found, return an error message
       else {

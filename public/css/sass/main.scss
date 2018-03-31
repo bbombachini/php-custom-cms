@@ -111,8 +111,8 @@ header{
   .links{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 100px;
-    grid-gap: 30px;
+    padding: 100px 150px;
+    grid-gap: 40px;
     a{
       padding: 20px 10px;
       text-decoration: none;
@@ -121,6 +121,7 @@ header{
       background-color: $purple;
       text-align: center;
       text-transform: uppercase;
+      font-size: 1.3rem;
     }
   }
   .options{
@@ -160,22 +161,20 @@ header{
     font-size: 1.1rem;
   }
   ul{
-    &::before{
-      @extend label;
-      color: $yellow;
-      font-size: 1.8rem;
-      content: "List of Movies";
-    }
     width: 70%;
     margin: 0 auto;
     li{
       display: grid;
-      grid-template-columns: 3fr 1fr 1fr;
+      grid-template-columns: 4fr 1fr 1fr 1fr;
       padding: 20px;
       a{
         text-decoration: none;
         font-family: $text;
-        color: $purple;
+        color: $yellow;
+        text-transform: uppercase;
+      }
+      a:nth-of-type(2){
+        color: $red;
       }
     }
     li:nth-child(1){
@@ -184,6 +183,16 @@ header{
     li:nth-child(odd){
       background-color: $light;
     }
+  }
+}
+
+.message{
+  h3{
+    font-size: 1.2rem;
+    color: $darkgrey;
+    font-family: $text;
+    padding: 30px 100px;
+    font-style: italic;
   }
 }
 

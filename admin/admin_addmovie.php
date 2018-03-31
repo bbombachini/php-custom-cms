@@ -23,7 +23,8 @@
       <div class="container">
           <?php include('partials/nav.php'); ?>
           <div class="movies-section">
-            <h2>Add a New Movie</h2>
+            <a href="admin_list.php?query=movies" class="backbtn">< BACK</a>
+            <h5>Add a New Movie</h5>
 
             <div class="message">
               <?php if(!empty($message)){
