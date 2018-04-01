@@ -9,7 +9,7 @@
     $title = $_POST['title'];
     $year = $_POST['year'];
     $story = $_POST['storyline'];
-    $trailer = $_POST['trailer'];
+    $trailer = $_FILES['trailer'];
     $rating = $_POST['rating'];
     $genre = $_POST['genList'];
     if($cover !== "" && $title!== "" && $year!== "" && $story!== "" && $trailer !== "" && $rating !== "" && $genre !== "") {
@@ -50,7 +50,7 @@
               <input type="textarea" required name="storyline" value="">
               <br><br>
               <label>Movie Trailer:</label>
-              <input type="text" required name="trailer" value="">
+              <input type="file" required name="trailer" value="">
               <br><br>
               <label>Movie Rating: (from 0 to 10)</label>
               <input type="text" required name="rating" value="">
