@@ -192,6 +192,43 @@ header{
   }
 }
 
+.two-columns{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  h3{
+    color: $yellow;
+    font-family: $title;
+    font-size: 1.6rem;
+    padding: 50px 0 5px 0;
+  }
+  h5{
+    font-family: $text;
+    color: $darkgrey;
+    font-size: 1.2rem;
+    padding: 0 0 30px 0;
+  }
+  p {
+    font-family: $text;
+    color: $darkgrey;
+    font-size: 1rem;
+    padding: 0 0 80px 0;
+  }
+  a {
+    background-color: $purple;
+    color: #fff;
+    padding: 20px 30px;
+    text-decoration: none;
+    font-family: $title;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+  }
+  img{
+    width: 70%;
+  }
+}
+
 .message{
   h3{
     font-size: 1.2rem;
@@ -219,30 +256,33 @@ header{
   width: 100%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  grid-row-gap: 40px;
   .cover{
     position: relative;
-    h4{
+    a{
       position: absolute;
       font-family: $title;
       background-color: $purple;
       color: #fff;
       top: 50%;
+      left: 0;
+      text-decoration: none;
       width: 0;
-      line-height: 3.3rem;
-      text-align: center;
+      font-size: 1.2rem;
+      line-height: 3rem;
       text-align: center;
       opacity: 0;
       transition: width 0.4s ease;
-      transition: font-size 0.6s ease;
+      // transition: opacity 0.6s ease;
     }
     img{
       width: 100%;
     }
   }.cover:hover{
-    h4{
+    a{
       width: 100%;
       opacity: 1;
-      font-size: 1.8rem;
+      // font-size: 1.4rem;
     }
   }
 }
@@ -289,6 +329,30 @@ header{
         width: 100%;
       }
       width: 100%;
+    }
+  }
+
+  #filter{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content:flex-start;
+    width: 100%;
+    padding: 0;
+    float: left;
+    margin: 20px 0;
+    label{
+      display: inline-flex;
+      float: left;
+      margin: 0 20px;
+    }
+    input{
+      margin: 0 20px;
+      width: 5%;
+      border-radius: 0;
+      border: 0;
+      background-color: $purple;
+      color: #fff;
     }
   }
 

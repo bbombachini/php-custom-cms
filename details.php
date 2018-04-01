@@ -13,23 +13,29 @@
 	    ?>
 	    <body>
 	      <div id="main-container">
-	        <div id="container">
-	          <h1 class="hidden">Roku | Flashback Video App</h1>
-	            <?php include('includes/nav.php'); ?>
-	        </div>
-	     </div>
-		<?php
-			if(!is_string($getMovie)) {
-				$row = mysqli_fetch_array($getMovie);
-				echo "<img src=\"public/images/{$row['movies_cover']}\" alt=\"{$row['movies_title']}\">
-				<p>{$row['movies_title']}</p>
-				<p>{$row['movies_year']}</p>
-				<p>{$row['movies_storyline']}</p>
-				<a href=\"index.php\">Go Back</a>
-				";
-			} else {
-				echo "<p>{$getMovie}</p>";
-			}
-		include('includes/footer.php');
-
-	 ?>
+					<div id="container">
+						<h1 class="hidden">Roku | Flashback Video App</h1>
+						 <?php include('includes/nav.php'); ?>
+	        		<section class="movies-section">
+								<div class="two-columns">
+									<?php
+										if(!is_string($getMovie)) {
+											$row = mysqli_fetch_array($getMovie);
+											echo "<div>
+											<img src=\"public/images/{$row['movies_cover']}\" alt=\"{$row['movies_title']}\">
+											</div>
+											<div>
+											<h3>{$row['movies_title']}</h3>
+											<h5>{$row['movies_year']}</h5>
+											<p>{$row['movies_storyline']}</p>
+											<a href=\"index.php\">Go Back</a>
+											</div>";
+										} else {
+											echo "<p>{$getMovie}</p>";
+										}
+										?>
+								</div>
+							</section>
+					</div>
+			 </div>
+		<?php include('includes/footer.php'); ?>
