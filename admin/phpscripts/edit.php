@@ -4,7 +4,7 @@
   $tbl = $_POST['tbl'];
   $col = $_POST['col'];
   $id = $_POST['id'];
-
+  $dest = str_replace("tbl_", "query=", $tbl);
   unset($_POST['tbl']);
   unset($_POST['col']);
   unset($_POST['id']);
@@ -29,7 +29,7 @@
   // echo $qstring;
   $updatequery = mysqli_query($link, $qstring);
   if ($updatequery) {
-    header("Location: ../admin_list.php");
+    header("Location: ../admin_list.php?{$dest}");
   } else {
     echo "There was a problem changing this content. Contact your web admin.";
   }
