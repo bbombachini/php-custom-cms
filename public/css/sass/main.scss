@@ -108,6 +108,12 @@ header{
     text-align: center;
     margin: 20px;
   }
+  h4.title-edit{
+    font-family: $title;
+    color: $purple;
+    font-size: 1.8rem;
+    font-style: normal;
+  }
   .links{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -253,6 +259,7 @@ header{
       color: $darkgrey;
       font-size: 1.1vw;
       padding: 5px 0;
+      text-transform: capitalize;
     }
     input, select, input[type=select], textarea {
       box-shadow: 0 0 6px 0 rgba(0,0,0,0.4);
@@ -276,6 +283,12 @@ header{
       background-color: $purple;
       color: #fff;
       cursor: pointer;
+    }
+    .cover-image{
+      img{
+        width: 100%;
+      }
+      width: 100%;
     }
   }
 

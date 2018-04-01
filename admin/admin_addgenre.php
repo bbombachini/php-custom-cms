@@ -5,8 +5,13 @@
 
   if(isset($_POST['submit'])){
     $name = $_POST['name'];
-    $result = addgenre($name);
-    $message = $result;
+    if($name !== ""){
+      $result = addgenre($name);
+      $message = $result;
+    } else {
+      $message = "Please fill out the required fields.";
+    }
+
   }
   include('partials/header.php');
   ?>
@@ -20,7 +25,7 @@
 
             <div class="message">
               <?php if(!empty($message)){
-                echo '<h3>'.$message.'</h3>';
+                echo "<h3 class=\"greeting\">".$message."</h3>";
               } ?>
             </div>
           <!-- DONT FORGET - Expects that there's something else than text > for photos -->

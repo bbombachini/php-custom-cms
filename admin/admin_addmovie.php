@@ -8,13 +8,17 @@
     $cover = $_FILES['file'];
     $title = $_POST['title'];
     $year = $_POST['year'];
-    $run = $_POST['runtime'];
     $story = $_POST['storyline'];
     $trailer = $_POST['trailer'];
-    $release = $_POST['release'];
+    $rating = $_POST['rating'];
     $genre = $_POST['genList'];
-    $result = addMovie($cover, $title, $year, $run, $story, $trailer, $release, $genre);
-    $message = $result;
+    if($cover !== "" && $title!== "" && $year!== "" && $story!== "" && $trailer !== "" && $rating !== "" && $genre !== "") {
+      $result = addMovie($cover, $title, $year, $story, $trailer, $rating, $genre);
+      $message = $result;
+    } else {
+      $message = "Please fill out the required fields.";
+    }
+
   }
   include('partials/header.php');
   ?>
@@ -28,43 +32,40 @@
 
             <div class="message">
               <?php if(!empty($message)){
-                echo '<h3>'.$message.'</h3>';
+                echo "<h3 class=\"greeting\">".$message."</h3>";
               } ?>
             </div>
-          <!-- DONT FORGET - Expects that there's something else than text > for photos -->
-          <form action="admin_addmovie.php" method="post" enctype="multipart/form-data">
-            <label>Cover Image:</label>
-            <input type="file" name="file" value="">
-            <br>
-            <label>Movie Title:</label>
-            <input type="text" name="title" value="">
-            <br><br>
-            <label>Movie Year:</label>
-            <input type="text" name="year" value="">
-            <br><br>
-            <label>Movie Runtime:</label>
-            <input type="text" name="runtime" value="">
-            <br><br>
-            <label>Movie Storyline:</label>
-            <input type="text" name="storyline" value="">
-            <br><br>
-            <label>Movie Trailer:</label>
-            <input type="text" name="trailer" value="">
-            <br><br>
-            <label>Movie Release:</label>
-            <input type="text" name="release" value="">
-            <br><br>
-            <select name="genList">
-              <option>Please select a movie genre...</option>
-              <?php
-                while($row = mysqli_fetch_array($genQuery)){
-                  echo "<option value=\"{$row['genre_id']}\">{$row['genre_name']}</option>";
-                }
-               ?>
-            </select>
-            <input type="submit" id="submit" name="submit" value="SAVE">
 
-          </form>
+            <form action="admin_addmovie.php" method="post" enctype="multipart/form-data">
+              <label>Cover Image:</label>
+              <input type="file" required name="file" value="">
+              <br>
+              <label>Movie Title:</label>
+              <input type="text" required name="title" value="">
+              <br><br>
+              <label>Movie Year:</label>
+              <input type="text" required name="year" value="">
+              <br><br>
+              <label>Movie Storyline:</label>
+              <input type="textarea" required name="storyline" value="">
+              <br><br>
+              <label>Movie Trailer:</label>
+              <input type="text" required name="trailer" value="">
+              <br><br>
+              <label>Movie Rating: (from 0 to 10)</label>
+              <input type="text" required name="rating" value="">
+              <br><br>
+              <select name="genList">
+                <option>Please select a movie genre...</option>
+                <?php
+                  while($row = mysqli_fetch_array($genQuery)){
+                    echo "<option required value=\"{$row['genre_id']}\">{$row['genre_name']}</option>";
+                  }
+                 ?>
+              </select>
+              <input type="submit" id="submit" name="submit" value="SAVE">
+
+            </form>
         </div>
       </div>
     </div>
