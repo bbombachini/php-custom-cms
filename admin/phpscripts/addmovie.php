@@ -34,13 +34,11 @@
             $result2 = mysqli_query($link, $qstring2);
             $row = mysqli_fetch_array($result2);
             $lastId = $row['movies_id'];
-            // echo $lastId;
             $string3 = "INSERT INTO tbl_mov_gen VALUES(NULL, {$lastId}, {$genre})";
             $result3 = mysqli_query($link, $string3);
             if($result3){
               $message = "Movie inserted with success!";
               return $message;
-              // echo "Saved";
             }
           }
         }

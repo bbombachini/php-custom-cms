@@ -22,10 +22,10 @@
       }
 
     $src = imagecreatefromjpeg($file);
-    $dst = imagecreatetruecolor($newwidth, $newheight);
-    imagecopyresampled($dst, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+    $dest = imagecreatetruecolor($newwidth, $newheight);
+    imagecopyresampled($dest, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
 
-    return $dst;
+    return $dest;
 }
 
 ?>

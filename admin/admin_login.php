@@ -17,7 +17,9 @@
     <h1 class="hidden">Login Panel</h1>
       <div class="container">
         <header>
-          <img src="../public/images/roku.svg" alt="Roku Logo">
+          <div class="logo">
+            <a href="../index.php"><img src="../public/images/roku.svg" alt="Roku Logo"></a>
+          </div>
           <nav id="main-nav">
             <h1 class="hidden">Main Navigation</h1>
             <ul>
