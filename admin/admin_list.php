@@ -7,13 +7,12 @@
     $dir = $_GET['query'];
     if($dir == "movies"){
       $tbl = "tbl_movies";
-      $result = getAll($tbl);
       $back = "movie";
     } else if($dir == "genre"){
       $tbl = "tbl_genre";
-      $genres = getAll($tbl);
       $back = "genre";
     }
+    $result = getAll($tbl);
   }
 
   include('partials/header.php');
@@ -30,19 +29,20 @@
                ?>
             </div>
               <h5>List of <?php echo $dir; ?></h5>
+              <div class="message">
+                <?php if(!empty($message)){
+                  echo '<h3>'.$message.'</h3>';
+                } ?>
+              </div>
               <ul>
               <?php
-                if(isset($result) && !is_string($result)){
-                  while($row = mysqli_fetch_array($result)){
-                    echo "<li><h4>{$row['movies_title']}</h4><h4>{$row['movies_year']}</h4>
-                    <a href=\"admin_edit_all.php?edit=movies&id={$row['movies_id']}\">Edit</a><a href=\"phpscripts/read.php?delete=movies&id={$row['movies_id']}\">Delete</a></li>";
-                  }
-                } else if(isset($genres) && !is_string($genres)){
-                  while($row = mysqli_fetch_array($genres)){
-                    echo "<li><h4>{$row['genre_name']}</h4>
-                    <a href=\"admin_edit_all.php?edit=genre&id={$row['genre_id']}\">Edit</a><a href=\"phpscripts/read.php?delete=genre&id={$row['genre_id']}\">Delete</a></li>";
-                  }
-                } else {
+              if(isset($result) && !is_string($result)){
+                while($row = mysqli_fetch_array($result, MYSQLI_NUM)){
+                  echo "<li><h4>{$row[1]}</h4>
+                  <a href=\"admin_edit_all.php?edit={$dir}&id={$row[0]}\">Edit</a><a href=\"phpscripts/read.php?delete={$dir}&id={$row[0]}\">Delete</a></li>";
+                }
+              }
+                else {
                   echo "<p class=\"error\">{$result}</p>";
                 }
                ?>

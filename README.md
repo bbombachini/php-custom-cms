@@ -1,16 +1,21 @@
-# Admin Login
-It's a system based on PHP that allows users to login and gain access to their web based admin account.
+# CMS Movie App
+Simple CMS created with PHP to allow users to create, read, update and delete content for a Movie App.
 
 ## Getting Started
 Git clone the repo inside your /htdocs folder on OSX or inside /www folder on Windows.
 
-$ git clone <repo-url> <folder-name>
+`git clone <repo-url> <folder-name>`
 
-Install the db_movies.sql file that is inside includes folder on your local MAMP/WAMP/LAMP and change the connect.php file.
+Install the db_videoapp.sql file that is inside `/db` folder on your local MAMP/WAMP/LAMP or through terminal:
 
-## Run Sass
-On terminal, go inside admin/css and run
-$ sass --watch sass/main.scss:main.css
+`mysql -h localhost -u <user> -p <password> <database name> < db_videoapp.sql`
+
+Use the `connect-example.php`to create a connect.php file with proper settings to connect to your local server.
+
+## Run Grunt
+Grunt is being used in this project to optimize images and compile sass and javascript. On terminal, on your root folder, run grunt with:
+
+`grunt`
 
 ## Versioning
 Git was used as a version control system since the beginning.

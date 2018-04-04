@@ -63,19 +63,38 @@
 				$tbl = "tbl_genre";
 				$col = "genre_id";
 			}
-			deleteSingle($id, $tbl, $col);
+			deleteSingle($id, $tbl, $col, $dir);
 		}
 
-		function deleteSingle($id, $tbl, $col){
+		function deleteSingle($id, $tbl, $col, $dir){
 			include('connect.php');
 			$deleteQuery = "UPDATE {$tbl} SET active = 0 WHERE {$col} = {$id};";
 			$delete = mysqli_query($link, $deleteQuery);
 			if($delete) {
-				redirect_to("../admin_index.php");
+				redirect_to("../admin_list.php?query={$dir}");
 			} else {
-				$error = "There was a problem processing this request. Try again later.";
-				return $error;
+				$message = "There was a problem processing this request. Try again later.";
+				return $message;
 			}
+			mysqli_close($link);
+		}
+
+		function movGen($tbl, $tbl2, $tbl3, $col, $col2, $col3, $id){
+			include('connect.php');
+			$genQuery = "SELECT genre_name FROM {$tbl}, {$tbl2}, {$tbl3} WHERE {$tbl}.{$col} = {$tbl3}.{$col} AND {$tbl2}.{$col2} = {$tbl3}.{$col2} AND {$tbl}.{$col} = {$id};";
+			$movGenres = mysqli_query($link, $genQuery);
+			$rows = array();
+	    while($row = mysqli_fetch_assoc($movGenres)) {
+	      array_push($rows, $row);
+	    }
+    	return $rows;
+			mysqli_close($link);
+		}
+
+		function deleteItem($tbl, $col, $id){
+			include('connect.php');
+			$delstring = "DELETE FROM {$tbl} WHERE {$col} = {$id};";
+			$delquery = mysqli_query($link, $delstring);
 			mysqli_close($link);
 		}
 
