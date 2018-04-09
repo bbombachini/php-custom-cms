@@ -1,15 +1,13 @@
 <?php
   require_once('phpscripts/config.php');
 
-
-
   if(isset($_POST['submit'])){
     $name = $_POST['name'];
     if($name !== ""){
       $result = addgenre($name);
       $message = $result;
     } else {
-      $message = "Please fill out the required fields.";
+      $message = "You need at least a name to be able to add a genre to the list!";
     }
 
   }
@@ -28,8 +26,7 @@
                 echo "<h3 class=\"greeting\">".$message."</h3>";
               } ?>
             </div>
-          <!-- DONT FORGET - Expects that there's something else than text > for photos -->
-          <form action="admin_addgenre.php" method="post" enctype="multipart/form-data">
+          <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" enctype="multipart/form-data">
 
             <label>Genre Title:</label>
             <input type="text" name="name" value="">

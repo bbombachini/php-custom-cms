@@ -197,6 +197,25 @@ header{
       background-color: $light;
     }
   }
+    .error{
+      margin: 0 auto;
+      font-family: $text;
+      width:50%;
+      ul{
+        width: 100%;
+        list-style-type: circle !important;
+        li{
+          background-color: #fff !important;
+          color: $red;
+        }
+        li:nth-child(odd){
+          background-color: #fff;
+        }
+        li:nth-child(1){
+          margin-top: 0;
+        }
+      }
+    }
 }
 
 .two-columns{
@@ -375,6 +394,7 @@ header{
       cursor: pointer;
     }
   }
+
 
 
   footer{

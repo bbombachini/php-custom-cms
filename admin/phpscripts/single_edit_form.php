@@ -5,7 +5,7 @@
     $result = getSingle($tbl, $col, $id);
     $getResult = mysqli_fetch_array($result);
     echo "<h4 class=\"title-edit\">{$getResult[1]}</h4>";
-    echo "<form action=\"phpscripts/edit.php\" method=\"post\" enctype=\"multipart/form-data\">";
+    echo "<form action=\"".htmlspecialchars('phpscripts/edit.php')."\" method=\"post\" enctype=\"multipart/form-data\">";
 
     echo "<input hidden name=\"tbl\" value=\"{$tbl}\">";
     echo "<input hidden name=\"col\" value=\"{$col}\">";

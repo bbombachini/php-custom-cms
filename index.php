@@ -1,7 +1,7 @@
 <?php
   ini_set('display_errors',1);
   error_reporting(E_ALL);
-  
+
   require_once('admin/phpscripts/config.php');
 
   $genFilter = "tbl_genre";
@@ -21,11 +21,9 @@
       $tbl = "tbl_movies";
       $getMovies = getAll($tbl);
     }
-    // echo $_POST['select'];
   } else {
     $tbl = "tbl_movies";
     $getMovies = getAll($tbl);
-    // echo $getMovies;
   }
   include('includes/header.php');
     ?>
