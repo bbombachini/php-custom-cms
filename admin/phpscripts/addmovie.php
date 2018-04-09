@@ -19,11 +19,11 @@
           if($size[0] > 533 || $size[1] > 800){
             $img = resize_image($targetpath, 533, 800);
             $thumb = resize_image($targetpath, 208, 312);
+            imagejpeg($img, $targetpath, 100);
           } else {
-            $img = $targetpath;
+            // $img = $targetpath;
             $thumb = resize_image($targetpath, 208, 312);
           }
-          imagejpeg($img, $targetpath, 100);
           imagejpeg($thumb, "../public/images/thumb_{$cover['name']}", 80);
           //Add to database
           $qstring = "INSERT INTO tbl_movies VALUES (NULL, '{$title}', '{$cover['name']}', '{$year}', '{$story}', '{$trailer['name']}', '{$rating}', 1)";
