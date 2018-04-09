@@ -16,6 +16,7 @@
       $back = "query=genre";
     }
   }
+
   ?>
   <div id="main-container">
     <h1 class="hidden">Login Panel</h1>

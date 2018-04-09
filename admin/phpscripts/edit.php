@@ -11,7 +11,6 @@
     $col = $_POST['col'];
     $id = $_POST['id'];
     $qstring = "UPDATE {$tbl} SET ";
-    // var_dump($_POST);
     $movieFile = $_FILES['movies_trailer'];
     $imageFile = $_FILES['movies_cover'];
 

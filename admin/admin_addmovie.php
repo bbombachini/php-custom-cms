@@ -3,21 +3,30 @@
 
   $tbl = "tbl_genre";
   $genQuery = getAll($tbl);
+  $errors = array();
 
   if(isset($_POST['submit'])){
-    $cover = $_FILES['file'];
+    $cover = $_FILES['cover'];
     $title = $_POST['title'];
     $year = $_POST['year'];
     $story = $_POST['storyline'];
     $trailer = $_FILES['trailer'];
     $rating = $_POST['rating'];
-    $genre = $_POST['genList'];
+    $genre = $_POST['genre'];
     if($cover !== "" && $title!== "" && $year!== "" && $story!== "" && $trailer !== "" && $rating !== "" && $genre !== "") {
       $result = addMovie($cover, $title, $year, $story, $trailer, $rating, $genre);
       $message = $result;
-    } else {
-      $message = "Please fill out the required fields.";
     }
+    else {
+      $message = "Please fill all fields.";
+    }
+    $required = array( "title", "year", "storyline", "rating", "genre");
+      foreach ($required as $require) {
+        $value = trim($_POST[$require]);
+        if(!has_value($value)){
+          $errors[$require] = ucfirst($require)." cannot be blank.";
+        }
+      }
 
   }
   include('partials/header.php');
@@ -36,30 +45,34 @@
               } ?>
             </div>
 
-            <form action="admin_addmovie.php" method="post" enctype="multipart/form-data">
+            <?php
+            echo "<div class=\"error\">".form_errors($errors)."</div>";
+           ?>
+
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" enctype="multipart/form-data">
               <label>Cover Image:</label>
-              <input type="file" required name="file" value="">
+              <input type="file" name="cover" value="">
               <br>
               <label>Movie Title:</label>
-              <input type="text" required name="title" value="">
+              <input type="text" name="title" value="">
               <br><br>
               <label>Movie Year:</label>
-              <input type="text" required name="year" value="">
+              <input type="text" name="year" value="">
               <br><br>
               <label>Movie Storyline:</label>
-              <input type="textarea" required name="storyline" value="">
+              <input type="textarea" name="storyline" value="">
               <br><br>
               <label>Movie Trailer:</label>
-              <input type="file" required name="trailer" value="">
+              <input type="file" name="trailer" value="">
               <br><br>
               <label>Movie Rating: (from 0 to 10)</label>
-              <input type="text" required name="rating" value="">
+              <input type="text" name="rating" value="">
               <br><br>
-              <select name="genList">
+              <select name="genre">
                 <option>Please select a movie genre...</option>
                 <?php
                   while($row = mysqli_fetch_array($genQuery)){
-                    echo "<option required value=\"{$row['genre_id']}\">{$row['genre_name']}</option>";
+                    echo "<option value=\"{$row['genre_id']}\">{$row['genre_name']}</option>";
                   }
                  ?>
               </select>

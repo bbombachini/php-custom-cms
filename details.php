@@ -1,9 +1,6 @@
 <?php
 	require_once('admin/phpscripts/config.php');
-	//to test if everything is working before adding more code
-	// echo $_GET['id'];
 	if(isset($_GET['id'])) {
-		//get the movie info
 		$tbl = "tbl_movies";
 		$col = "movies_id";
 		$id = $_GET['id'];
